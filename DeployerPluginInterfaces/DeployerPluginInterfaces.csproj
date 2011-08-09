@@ -165,6 +165,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>xcopy /y "$(TargetPath)" "$(SolutionDir)Deployer\bin\Debug\Plugins\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /y "$(TargetPath)" "$(SolutionDir)Deployer\bin\$(ConfigurationName)\Plugins\"</PostBuildEvent>
   </PropertyGroup>
 </Project>

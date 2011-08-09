@@ -231,8 +231,8 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>xcopy /y "$(TargetDir)*.dll" "$(SolutionDir)Deployer\bin\Debug\Plugins\"
-xcopy /y "$(TargetDir)*.pdb" "$(SolutionDir)Deployer\bin\Debug\Plugins\"
+    <PostBuildEvent>xcopy /y "$(TargetDir)*.dll" "$(SolutionDir)Deployer\bin\$(ConfigurationName)\Plugins\"
+xcopy /y "$(TargetDir)*.pdb" "$(SolutionDir)Deployer\bin\$(ConfigurationName)\Plugins\"
 </PostBuildEvent>
   </PropertyGroup>
 </Project>
