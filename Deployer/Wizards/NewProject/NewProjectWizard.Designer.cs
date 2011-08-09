@@ -159,7 +159,7 @@ namespace Deployer.Wizards.NewProject {
     "ploy the correct files.";
             this._pageFinish.Location = new System.Drawing.Point(0, 0);
             this._pageFinish.Name = "_pageFinish";
-            this._pageFinish.Size = new System.Drawing.Size(761, 417);
+            this._pageFinish.Size = new System.Drawing.Size(761, 508);
             this._pageFinish.Style = CristiPotlog.Controls.WizardPageStyle.Finish;
             this._pageFinish.TabIndex = 13;
             this._pageFinish.Title = "Finished";

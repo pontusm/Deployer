@@ -167,7 +167,7 @@ namespace Deployer.Wizards.NewProject {
 		private void _wizard_Finish(object sender, EventArgs e) {
 			// Fill in missing information
 			_project.LocalPath = _localpath.Text;
-
+		    _project.ActiveDeployConfig.UseProjectFilter = _useProjectFilter.Checked;
 		}
 
 
