@@ -1,15 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using CristiPotlog.Controls;
 using DeployerEngine;
 using DeployerEngine.Project;
-using DeployerEngine.Util;
 using DeployerPluginInterfaces;
 
 namespace Deployer.Wizards.NewProject {
@@ -42,16 +37,19 @@ namespace Deployer.Wizards.NewProject {
 			DeployDestination dest = new DeployDestination(id);
 			_project.ActiveDeployConfig.Destinations.Add(dest);
 
-			PluginDescriptor[] pluginDescriptors = PluginManager.GetPluginDescriptors();
+			// Get only plugins that can be used to deploy
+			var pluginDescriptors = new List<PluginDescriptor>(PluginManager.GetPluginDescriptors(x => x.SupportsFileDeploy));
 
 			// Default to use the first available plugin
-			if(pluginDescriptors.Length > 0)
+			if(pluginDescriptors.Count > 0)
 				dest.ChangePlugin(pluginDescriptors[0]);
 
 			// Populate plugin list
 			_plugin.ValueMember = "PluginTypeFullName";
 			_plugin.DisplayMember = "PluginName";
 			_plugin.DataSource = pluginDescriptors;
+
+			_filtersView.Project = _project;
 		}
 
 		#endregion
@@ -66,16 +64,17 @@ namespace Deployer.Wizards.NewProject {
 		/// <param name="e">The <see cref="CristiPotlog.Controls.Wizard.BeforeSwitchPagesEventArgs"/> instance containing the event data.</param>
 		private void _wizard_BeforeSwitchPages(object sender, Wizard.BeforeSwitchPagesEventArgs e) {
 			WizardPage oldpage = _wizard.Pages[e.OldIndex];
+			WizardPage newpage = _wizard.Pages[e.NewIndex];
 
-			if(oldpage == _pageSourcePath) {
+			if(newpage == _pageDestination) {
 				if(!Directory.Exists(_localpath.Text)) {
 					MessageBox.Show(this, string.Format("Directory '{0}' does not exist.", _localpath.Text), "Directory not found",
-					                MessageBoxButtons.OK, MessageBoxIcon.Error);
+									MessageBoxButtons.OK, MessageBoxIcon.Error);
 					_localpath.Focus();
 					e.Cancel = true;
 				}
 			}
-			else if(oldpage == _pageDestination) {
+			else if(newpage == _pageFileTypes) {
 				if(_destinationName.Text.Length == 0) {
 					MessageBox.Show(this, "Please enter a name for the destination.", "No destination name",
 									MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -98,6 +97,19 @@ namespace Deployer.Wizards.NewProject {
 			}
 			else if(newpage == _pageDestination) {
 				_wizard.NextEnabled = !string.IsNullOrEmpty(_pageDestination.Text) && _plugin.SelectedItem != null;
+			}
+			else if (newpage == _pageFileTypes) {
+				_project.ActiveDeployConfig.Destinations[0].Name = _destinationName.Text;
+
+				// Setup filters to point to our single destination
+				DeployDestination dest = _project.ActiveDeployConfig.Destinations[0];
+				foreach (FilterSettings fs in _project.ActiveDeployConfig.FilterSettings) {
+					foreach (Filter f in fs.IncludeFiles) {
+						f.DeployDestinationIdentifier = dest.Identifier;
+					}
+				}
+				
+				_filtersView.RefreshUI();
 			}
 		}
 
@@ -155,15 +167,7 @@ namespace Deployer.Wizards.NewProject {
 		private void _wizard_Finish(object sender, EventArgs e) {
 			// Fill in missing information
 			_project.LocalPath = _localpath.Text;
-			_project.ActiveDeployConfig.Destinations[0].Name = _destinationName.Text;
 
-			// Setup filters to point to our single destination
-			DeployDestination dest = _project.ActiveDeployConfig.Destinations[0];
-			foreach(FilterSettings fs in _project.ActiveDeployConfig.FilterSettings) {
-				foreach(Filter f in fs.IncludeFiles) {
-					f.DeployDestinationIdentifier = dest.Identifier;
-				}
-			}
 		}
 
 

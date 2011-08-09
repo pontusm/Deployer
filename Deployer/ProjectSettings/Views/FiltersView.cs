@@ -35,20 +35,24 @@ namespace Deployer.ProjectSettings.Views {
 		#region Startup/load
 
 		private void FiltersView_Load(object sender, EventArgs e) {
-			if (_project == null)
-				return;
-
-			// Setup datagridviews
-			SetupIncludeGridView();
-			SetupExcludeGridViews();
-
-			// Populate filters list
-			_filters.DataSource = new ArrayList(_project.ActiveDeployConfig.FilterSettings);
-
-			UpdateUI();
+            RefreshUI();
 		}
 
 		#endregion
+
+        public void RefreshUI() {
+            if (_project == null)
+                return;
+
+            // Setup datagridviews
+            SetupIncludeGridView();
+            SetupExcludeGridViews();
+
+            // Populate filters list
+            _filters.DataSource = new ArrayList(_project.ActiveDeployConfig.FilterSettings);
+
+            UpdateUI();
+        }
 
 		private void _filters_SelectedIndexChanged(object sender, EventArgs e) {
 			_currentFilterSettingsIndex = _filters.SelectedIndex;
