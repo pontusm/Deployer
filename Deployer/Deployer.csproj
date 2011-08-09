@@ -34,7 +34,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetZone>LocalIntranet</TargetZone>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ManifestCertificateThumbprint>9DA1F828C0EA55660AE15DB0A1613A0BBC5A9387</ManifestCertificateThumbprint>
     <ManifestKeyFile>Deployer_TemporaryKey.pfx</ManifestKeyFile>
