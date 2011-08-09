@@ -1,0 +1,6 @@
+<Configuration>
+  <Localizable>No</Localizable>
+  <NamespaceFolders>
+    <SkipFolder>A1F55396-E750-4804-97C0-7BFDDAC2D681/d:ServiceController</SkipFolder>
+  </NamespaceFolders>
+</Configuration>

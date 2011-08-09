@@ -1,0 +1,36 @@
+* Deployer ToDo list *
+----------------------
+
+-Detektera om servicen redan är stoppad innan man försöker stoppa den igen
+ Fråga också om man ska starta den sen igen
+
+-Kom ihåg senast valda config
+
+-Featurerequest: Möjlighet att uppdatera fil utan att uppdatera timestamp-filen.
+
+-Automatiskt rensa bort gamla versioner av Deployern
+-New project wizard
+ Steg:
+  >Peka ut root folder där projektet som ska deployas ligger
+  >Speca en destination (eller flera)
+  >Speca filtyper som ska deployas (kanske välja projekttyp och få förslag på filer?)
+  >Välja vart deploy-filen sparas (default är i root foldern)
+
+-Fixa en bra lösning för att hantera när användaren vill inkludera en fil i en katalog som är med på en exclude-lista.
+ Kanske kan man känna av att en folder är excluded när man ska lägga in egna FilterSettings-regler för den och varna i så fall.
+
+-Ändra pluginsettings så att de använder en UserControl istället. Denna kan man då lägga in i settingsdialogen för att
+ editera inställningarna för en destination
+ * Detta funkar inte! Går inte använda UserControl mellan AppDomains
+
+-Progressdialog när man scannar (ifall det tar lång tid) och möjlighet att avbryta. Testa tex att scanna My Documents (test.deploy)
+-Möjlighet att scanna efter filer som inte finns i projektet och rensa bort dem.
+-Man ska kunna ställa in att vissa filer eller kataloger alltid ska ignoreras.
+-Fixa en snyggare lösning för skrivskyddade filer. Man borde kunna spara över filer även för FTP (funkar idag endast bara vid file copy)
+   Man borde kunna anropa 'host' ifrån pluginen och visa en dialogruta och fråga om man vill skriva över filen.
+-Visa lista med recent files när man startar programmet.
+-Fixa felhantering i settings dialog så att det inte buggar när man inte fyller i t.ex. filfilter på korrekt sätt
+-Ignorera alltid fil (deploya aldrig) (eller alla filer med en viss extension) i ett visst projekt (eller bara den här deployningen - deploy once)
+-Bekräfta varje fil som laddas upp så att man har möjlighet att kontrollera att det blir rätt, och kan avbryta eller hoppa över
+-När man jämför mismatchande tabeller vore det snyggt om skillnaderna var rödmarkerade
+-Visa dataöverföringshastigheten (t.ex. vid FTP)

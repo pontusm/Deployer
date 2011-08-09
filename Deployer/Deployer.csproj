@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6F16CFAD-FD2D-4167-85BD-3CAFA1FFE705}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>Resources\server_from_client.ico</ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>Deployer</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Deployer</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>Deployer.MainForm</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>true</GenerateManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>9DA1F828C0EA55660AE15DB0A1613A0BBC5A9387</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Deployer_TemporaryKey.pfx</ManifestKeyFile>
+    <SignManifests>false</SignManifests>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>C:\Work\Deployer\Deployer\DeployerInstall\ClickOnce\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://scratchy.stendahls.net/Deployer/</UpdateUrl>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.5.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Controls, Version=1.0.0.2, Culture=neutral">
+      <HintPath>..\Libs\WizardControl\Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="GlacialControls">
+      <HintPath>..\Libs\GlacialControls\GlacialControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.DirectoryServices">
+      <Name>System.DirectoryServices</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\DeployerEngine\DeployerEngine.csproj">
+      <Name>DeployerEngine</Name>
+      <Project>{99BF4268-5703-42B3-BE7A-148C722F277F}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\DeployerPluginInterfaces\DeployerPluginInterfaces.csproj">
+      <Name>DeployerPluginInterfaces</Name>
+      <Project>{A3045A2C-B793-4F71-9F1D-4B2A218A9F2F}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+    <None Include="Deployer_TemporaryKey.pfx" />
+    <None Include="Resources\document_new.png" />
+    <None Include="Resources\index_delete.png" />
+    <None Include="Properties\DataSources\DeployerEngine.Project.FilterCollection.datasource" />
+    <None Include="Resources\server_from_client.png" />
+    <None Include="Resources\index_view.png" />
+    <None Include="Resources\server_from_client.ico" />
+    <None Include="Resources\data_view.png" />
+    <None Include="Resources\data_up.png" />
+    <None Include="Resources\data_refresh.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\index_refresh.png" />
+    <None Include="Resources\index_up.png" />
+    <None Include="Resources\index.png" />
+    <None Include="Resources\preferences.png" />
+    <None Include="Resources\disk_blue.png" />
+    <None Include="Resources\folder_out.png" />
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DatabaseDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomExceptionHandler.cs" />
+    <Compile Include="FileInfoHelper.cs" />
+    <Compile Include="LastModifiedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersistWindowState.cs">
+    </Compile>
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSettings\Dialogs\AddDestinationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectSettings\Dialogs\AddDestinationForm.Designer.cs">
+      <DependentUpon>AddDestinationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSettings\ProjectSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectSettings\ProjectSettingsForm.Designer.cs">
+      <DependentUpon>ProjectSettingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\DestinationsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\DestinationsView.Designer.cs">
+      <DependentUpon>DestinationsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\FiltersView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\FiltersView.Designer.cs">
+      <DependentUpon>FiltersView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\HooksView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\HooksView.Designer.cs">
+      <DependentUpon>HooksView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\TimestampView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectSettings\Views\TimestampView.Designer.cs">
+      <DependentUpon>TimestampView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistryHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <Compile Include="WhatsNewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhatsNewForm.Designer.cs">
+      <DependentUpon>WhatsNewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wizards\NewProject\NewProjectWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wizards\NewProject\NewProjectWizard.Designer.cs">
+      <DependentUpon>NewProjectWizard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AboutForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseDetailsForm.resx">
+      <DependentUpon>DatabaseDetailsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LastModifiedForm.resx">
+      <DependentUpon>LastModifiedForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSettings\Dialogs\AddDestinationForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddDestinationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSettings\ProjectSettingsForm.resx">
+      <DependentUpon>ProjectSettingsForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSettings\Views\DestinationsView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DestinationsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSettings\Views\FiltersView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FiltersView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSettings\Views\HooksView.resx">
+      <DependentUpon>HooksView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectSettings\Views\TimestampView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TimestampView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhatsNewForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WhatsNewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Wizards\NewProject\NewProjectWizard.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NewProjectWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <None Include="ToDo.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

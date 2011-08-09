@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99BF4268-5703-42B3-BE7A-148C722F277F}</ProjectGuid>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>DeployerEngine</AssemblyName>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DeployerEngine</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <WebReference_EnableProperties>true</WebReference_EnableProperties>
+    <WebReference_EnableSQLTypes>false</WebReference_EnableSQLTypes>
+    <WebReference_EnableLegacyEventingModel>true</WebReference_EnableLegacyEventingModel>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services">
+      <Name>System.Web.Services</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\DeployerPluginInterfaces\DeployerPluginInterfaces.csproj">
+      <Name>DeployerPluginInterfaces</Name>
+      <Project>{A3045A2C-B793-4F71-9F1D-4B2A218A9F2F}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseComparison.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseDeployer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseDeploymentStructure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DatabaseTransferEventArgs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\DataTableComparer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\Objects\DbStoredProcedure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\Objects\DbView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\Objects\IDatabaseObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Database\TableDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DeployErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeploymentFile.cs" />
+    <Compile Include="DeploymentFolder.cs" />
+    <Compile Include="DeploymentManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DeploymentStructure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FileScanner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PluginCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PluginManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DatabaseDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DatabasePair.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DatabasePairCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DatabaseSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DeployDestination.cs" />
+    <Compile Include="Project\DeployDestinationCollection.cs" />
+    <Compile Include="Project\DeployHookSettings.cs" />
+    <Compile Include="Project\DeploymentProject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DeployConfig.cs" />
+    <Compile Include="Project\Filter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\FilterCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\FilterSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\FilterSettingsCollection.cs" />
+    <Compile Include="Project\PluginSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\PluginSettingsCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Project\DeployConfigCollection.cs" />
+    <Compile Include="Timestamp\TimestampFile.cs" />
+    <Compile Include="Util\ArrayComparer.cs" />
+    <Compile Include="Util\PathHelper.cs" />
+    <Compile Include="Web References\DatabaseInfoService\Reference.cs">
+      <DependentUpon>Reference.map</DependentUpon>
+      <SubType>code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <EmbeddedResource Include="DeployErrorForm.resx">
+      <DependentUpon>DeployErrorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="key.snk" />
+    <None Include="Web References\DatabaseInfoService\DatabaseInfo.disco" />
+    <None Include="Web References\DatabaseInfoService\DatabaseInfo.wsdl" />
+    <None Include="Web References\DatabaseInfoService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <WebReferenceUrl Include="http://localhost/ServiceWeb/DatabaseInfo.asmx">
+      <RelPath>Web References\DatabaseInfoService\</RelPath>
+      <UrlBehavior>Static</UrlBehavior>
+      <UpdateFromURL>http://localhost/ServiceWeb/DatabaseInfo.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

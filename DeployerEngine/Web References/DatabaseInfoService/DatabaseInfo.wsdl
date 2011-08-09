@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://gws.husqvarna.com/webservices/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://gws.husqvarna.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://gws.husqvarna.com/webservices/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="ExecuteDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteNonQuery">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="query" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteNonQueryResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTables">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTablesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTablesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTableInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetViewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetViewsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViewInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="viewName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViewInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetViewInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViewSourceCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="viewName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetViewSourceCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetViewSourceCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcedures">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProceduresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProceduresResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcedureSourceCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="procedureName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcedureSourceCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProcedureSourceCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFunctionSourceCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="functionName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFunctionSourceCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFunctionSourceCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="databaseName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartSessionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ShutdownSession">
+        <s:complexType />
+      </s:element>
+      <s:element name="ShutdownSessionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ExecuteDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSet" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQuerySoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQuery" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteNonQuerySoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteNonQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTables" />
+  </wsdl:message>
+  <wsdl:message name="GetTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTableInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTableInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetTableInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTableInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetViewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetViews" />
+  </wsdl:message>
+  <wsdl:message name="GetViewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetViewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetViewInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetViewInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetViewInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetViewInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetViewSourceCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetViewSourceCode" />
+  </wsdl:message>
+  <wsdl:message name="GetViewSourceCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetViewSourceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProceduresSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcedures" />
+  </wsdl:message>
+  <wsdl:message name="GetProceduresSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProceduresResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProcedureSourceCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcedureSourceCode" />
+  </wsdl:message>
+  <wsdl:message name="GetProcedureSourceCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProcedureSourceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFunctionSourceCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFunctionSourceCode" />
+  </wsdl:message>
+  <wsdl:message name="GetFunctionSourceCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFunctionSourceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:StartSession" />
+  </wsdl:message>
+  <wsdl:message name="StartSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:StartSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ShutdownSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:ShutdownSession" />
+  </wsdl:message>
+  <wsdl:message name="ShutdownSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:ShutdownSessionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DatabaseInfoSoap">
+    <wsdl:operation name="ExecuteDataSet">
+      <wsdl:input message="tns:ExecuteDataSetSoapIn" />
+      <wsdl:output message="tns:ExecuteDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <wsdl:input message="tns:ExecuteNonQuerySoapIn" />
+      <wsdl:output message="tns:ExecuteNonQuerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <wsdl:input message="tns:GetTablesSoapIn" />
+      <wsdl:output message="tns:GetTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableInfo">
+      <wsdl:input message="tns:GetTableInfoSoapIn" />
+      <wsdl:output message="tns:GetTableInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViews">
+      <wsdl:input message="tns:GetViewsSoapIn" />
+      <wsdl:output message="tns:GetViewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewInfo">
+      <wsdl:input message="tns:GetViewInfoSoapIn" />
+      <wsdl:output message="tns:GetViewInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViewSourceCode">
+      <wsdl:input message="tns:GetViewSourceCodeSoapIn" />
+      <wsdl:output message="tns:GetViewSourceCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedures">
+      <wsdl:input message="tns:GetProceduresSoapIn" />
+      <wsdl:output message="tns:GetProceduresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedureSourceCode">
+      <wsdl:input message="tns:GetProcedureSourceCodeSoapIn" />
+      <wsdl:output message="tns:GetProcedureSourceCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFunctionSourceCode">
+      <wsdl:input message="tns:GetFunctionSourceCodeSoapIn" />
+      <wsdl:output message="tns:GetFunctionSourceCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartSession">
+      <wsdl:input message="tns:StartSessionSoapIn" />
+      <wsdl:output message="tns:StartSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ShutdownSession">
+      <wsdl:input message="tns:ShutdownSessionSoapIn" />
+      <wsdl:output message="tns:ShutdownSessionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DatabaseInfoSoap" type="tns:DatabaseInfoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExecuteDataSet">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/ExecuteDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableInfo">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetTableInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViews">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetViews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewInfo">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetViewInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewSourceCode">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetViewSourceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedures">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetProcedures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedureSourceCode">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetProcedureSourceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFunctionSourceCode">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/GetFunctionSourceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartSession">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/StartSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShutdownSession">
+      <soap:operation soapAction="http://gws.husqvarna.com/webservices/ShutdownSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DatabaseInfoSoap12" type="tns:DatabaseInfoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExecuteDataSet">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/ExecuteDataSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNonQuery">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/ExecuteNonQuery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableInfo">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetTableInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViews">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetViews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewInfo">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetViewInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViewSourceCode">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetViewSourceCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedures">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetProcedures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcedureSourceCode">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetProcedureSourceCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFunctionSourceCode">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/GetFunctionSourceCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartSession">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/StartSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShutdownSession">
+      <soap12:operation soapAction="http://gws.husqvarna.com/webservices/ShutdownSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DatabaseInfo">
+    <wsdl:port name="DatabaseInfoSoap" binding="tns:DatabaseInfoSoap">
+      <soap:address location="http://localhost/ServiceWeb/DatabaseInfo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DatabaseInfoSoap12" binding="tns:DatabaseInfoSoap12">
+      <soap12:address location="http://localhost/ServiceWeb/DatabaseInfo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
