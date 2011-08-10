@@ -95,8 +95,9 @@
 //           Fixed some minor issues and bugs
 // 2.7.0.1 - Fixed serialization bug
 // 2.7.1.0 - Better visual feedback from ServiceController
-// 2.8.0.0 - Added support for automatic updates
+// 2.8.0.0 - Split up the plugin code base in order to launch as OSS
 //           Fixed a problem with empty wildcards
 //           Better handling of problems with timestamp files
+//           Improved the New Project wizard a bit
 
 [assembly: AssemblyVersion("2.8.0.0")]
