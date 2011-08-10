@@ -244,11 +244,13 @@ namespace DeployerEngine.Project
 			FilterSettings fs = new FilterSettings();
 			ActiveDeployConfig.FilterSettings.Add(fs);
 
+			// Add some default file types
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.asax"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.ascx"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.asp"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.aspx"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.html"));
+			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.cshtml"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.dll"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.pdb"));
 			fs.IncludeFiles.Add(new Filter(FilterExpressionType.Wildcard, @"*.png"));
