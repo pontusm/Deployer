@@ -41,8 +41,8 @@ namespace Deployer.Wizards.NewProject {
             this._plugin = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this._pageFileTypes = new CristiPotlog.Controls.WizardPage();
-            this._filtersView = new Deployer.ProjectSettings.Views.FiltersView();
             this._pageFinish = new CristiPotlog.Controls.WizardPage();
+            this._filtersView = new Deployer.ProjectSettings.Views.FiltersView();
             this._wizard.SuspendLayout();
             this._pageSourcePath.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -54,9 +54,9 @@ namespace Deployer.Wizards.NewProject {
             // _wizard
             // 
             this._wizard.Controls.Add(this._pageSourcePath);
-            this._wizard.Controls.Add(this._pageFinish);
-            this._wizard.Controls.Add(this._pageFileTypes);
             this._wizard.Controls.Add(this._pageDestination);
+            this._wizard.Controls.Add(this._pageFileTypes);
+            this._wizard.Controls.Add(this._pageFinish);
             this._wizard.HeaderImage = global::Deployer.Properties.Resources.document_new;
             this._wizard.Location = new System.Drawing.Point(0, 0);
             this._wizard.Name = "_wizard";
@@ -116,7 +116,7 @@ namespace Deployer.Wizards.NewProject {
             // _browse
             // 
             this._browse.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this._browse.Location = new System.Drawing.Point(376, 24);
+            this._browse.Location = new System.Drawing.Point(371, 23);
             this._browse.Name = "_browse";
             this._browse.Size = new System.Drawing.Size(75, 23);
             this._browse.TabIndex = 1;
@@ -146,7 +146,7 @@ namespace Deployer.Wizards.NewProject {
             this._pageDestination.Description = "Please specify where you would like to deploy your files.";
             this._pageDestination.Location = new System.Drawing.Point(0, 0);
             this._pageDestination.Name = "_pageDestination";
-            this._pageDestination.Size = new System.Drawing.Size(428, 208);
+            this._pageDestination.Size = new System.Drawing.Size(761, 508);
             this._pageDestination.TabIndex = 11;
             this._pageDestination.Title = "Destination";
             // 
@@ -236,18 +236,9 @@ namespace Deployer.Wizards.NewProject {
             this._pageFileTypes.Description = "Please specify the types of files to deploy.";
             this._pageFileTypes.Location = new System.Drawing.Point(0, 0);
             this._pageFileTypes.Name = "_pageFileTypes";
-            this._pageFileTypes.Size = new System.Drawing.Size(428, 208);
+            this._pageFileTypes.Size = new System.Drawing.Size(761, 508);
             this._pageFileTypes.TabIndex = 12;
             this._pageFileTypes.Title = "File types";
-            // 
-            // _filtersView
-            // 
-            this._filtersView.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._filtersView.Location = new System.Drawing.Point(12, 74);
-            this._filtersView.Name = "_filtersView";
-            this._filtersView.Project = null;
-            this._filtersView.Size = new System.Drawing.Size(737, 414);
-            this._filtersView.TabIndex = 5;
             // 
             // _pageFinish
             // 
@@ -259,6 +250,15 @@ namespace Deployer.Wizards.NewProject {
             this._pageFinish.Style = CristiPotlog.Controls.WizardPageStyle.Finish;
             this._pageFinish.TabIndex = 13;
             this._pageFinish.Title = "Finished";
+            // 
+            // _filtersView
+            // 
+            this._filtersView.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._filtersView.Location = new System.Drawing.Point(12, 74);
+            this._filtersView.Name = "_filtersView";
+            this._filtersView.Project = null;
+            this._filtersView.Size = new System.Drawing.Size(737, 414);
+            this._filtersView.TabIndex = 5;
             // 
             // NewProjectWizard
             // 

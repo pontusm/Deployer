@@ -82,9 +82,13 @@ namespace Deployer
 			this._localpath = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.Destinations = new System.Windows.Forms.TabPage();
+			this._destinationsView = new Deployer.ProjectSettings.Views.DestinationsView();
 			this.Filters = new System.Windows.Forms.TabPage();
+			this._filtersView = new Deployer.ProjectSettings.Views.FiltersView();
 			this.Hooks = new System.Windows.Forms.TabPage();
+			this._hooksView = new Deployer.ProjectSettings.Views.HooksView();
 			this.Timestamp = new System.Windows.Forms.TabPage();
+			this._timestampView = new Deployer.ProjectSettings.Views.TimestampView();
 			this.Database = new System.Windows.Forms.TabPage();
 			this.groupBox6 = new System.Windows.Forms.GroupBox();
 			this.label6 = new System.Windows.Forms.Label();
@@ -103,10 +107,6 @@ namespace Deployer
 			this._cancel = new System.Windows.Forms.Button();
 			this._ok = new System.Windows.Forms.Button();
 			this._tooltip = new System.Windows.Forms.ToolTip(this.components);
-			this._destinationsView = new Deployer.ProjectSettings.Views.DestinationsView();
-			this._filtersView = new Deployer.ProjectSettings.Views.FiltersView();
-			this._timestampView = new Deployer.ProjectSettings.Views.TimestampView();
-			this._hooksView = new Deployer.ProjectSettings.Views.HooksView();
 			this.tabControl1.SuspendLayout();
 			this.General.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -125,9 +125,9 @@ namespace Deployer
 			// 
 			// tabControl1
 			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.tabControl1.Controls.Add(this.General);
 			this.tabControl1.Controls.Add(this.Destinations);
 			this.tabControl1.Controls.Add(this.Filters);
@@ -174,9 +174,9 @@ namespace Deployer
 			glColumn3.Text = "Version";
 			glColumn3.Width = 80;
 			this._pluginlist.Columns.AddRange(new GlacialComponents.Controls.GLColumn[] {
-            glColumn1,
-            glColumn2,
-            glColumn3});
+			glColumn1,
+			glColumn2,
+			glColumn3});
 			this._pluginlist.HotTrackingColor = System.Drawing.SystemColors.HotTrack;
 			this._pluginlist.ImageList = null;
 			this._pluginlist.Location = new System.Drawing.Point(8, 24);
@@ -208,7 +208,7 @@ namespace Deployer
 			this._useProjectFilter.Name = "_useProjectFilter";
 			this._useProjectFilter.Size = new System.Drawing.Size(248, 24);
 			this._useProjectFilter.TabIndex = 2;
-			this._useProjectFilter.Text = "Scan from projectfile (VS2003 or VS2005)";
+			this._useProjectFilter.Text = "Scan from Visual Studio projectfile (*.csproj)";
 			// 
 			// _browse
 			// 
@@ -227,7 +227,7 @@ namespace Deployer
 			this._localpath.Size = new System.Drawing.Size(296, 21);
 			this._localpath.TabIndex = 0;
 			this._tooltip.SetToolTip(this._localpath, "The path where the files to deploy are stored. Relative paths will be calculated " +
-					"from the location of the project file.");
+		"from the location of the project file.");
 			// 
 			// label2
 			// 
@@ -243,40 +243,73 @@ namespace Deployer
 			this.Destinations.Controls.Add(this._destinationsView);
 			this.Destinations.Location = new System.Drawing.Point(4, 22);
 			this.Destinations.Name = "Destinations";
-			this.Destinations.Size = new System.Drawing.Size(762, 489);
+			this.Destinations.Size = new System.Drawing.Size(192, 74);
 			this.Destinations.TabIndex = 6;
 			this.Destinations.Text = "Destinations";
 			this.Destinations.UseVisualStyleBackColor = true;
+			// 
+			// _destinationsView
+			// 
+			this._destinationsView.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._destinationsView.Location = new System.Drawing.Point(8, 8);
+			this._destinationsView.Name = "_destinationsView";
+			this._destinationsView.Project = null;
+			this._destinationsView.Size = new System.Drawing.Size(746, 472);
+			this._destinationsView.TabIndex = 0;
 			// 
 			// Filters
 			// 
 			this.Filters.Controls.Add(this._filtersView);
 			this.Filters.Location = new System.Drawing.Point(4, 22);
 			this.Filters.Name = "Filters";
-			this.Filters.Size = new System.Drawing.Size(762, 489);
+			this.Filters.Size = new System.Drawing.Size(192, 74);
 			this.Filters.TabIndex = 7;
 			this.Filters.Text = "Filters";
 			this.Filters.UseVisualStyleBackColor = true;
+			// 
+			// _filtersView
+			// 
+			this._filtersView.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this._filtersView.Location = new System.Drawing.Point(8, 8);
+			this._filtersView.Name = "_filtersView";
+			this._filtersView.Project = null;
+			this._filtersView.Size = new System.Drawing.Size(746, 472);
+			this._filtersView.TabIndex = 0;
 			// 
 			// Hooks
 			// 
 			this.Hooks.Controls.Add(this._hooksView);
 			this.Hooks.Location = new System.Drawing.Point(4, 22);
 			this.Hooks.Name = "Hooks";
-			this.Hooks.Size = new System.Drawing.Size(762, 489);
+			this.Hooks.Size = new System.Drawing.Size(192, 74);
 			this.Hooks.TabIndex = 8;
 			this.Hooks.Text = "Hooks";
 			this.Hooks.UseVisualStyleBackColor = true;
+			// 
+			// _hooksView
+			// 
+			this._hooksView.Location = new System.Drawing.Point(8, 8);
+			this._hooksView.Name = "_hooksView";
+			this._hooksView.Size = new System.Drawing.Size(746, 472);
+			this._hooksView.TabIndex = 0;
 			// 
 			// Timestamp
 			// 
 			this.Timestamp.Controls.Add(this._timestampView);
 			this.Timestamp.Location = new System.Drawing.Point(4, 22);
 			this.Timestamp.Name = "Timestamp";
-			this.Timestamp.Size = new System.Drawing.Size(762, 489);
+			this.Timestamp.Size = new System.Drawing.Size(192, 74);
 			this.Timestamp.TabIndex = 5;
 			this.Timestamp.Text = "Timestamp";
 			this.Timestamp.UseVisualStyleBackColor = true;
+			// 
+			// _timestampView
+			// 
+			this._timestampView.Location = new System.Drawing.Point(8, 8);
+			this._timestampView.Name = "_timestampView";
+			this._timestampView.Project = null;
+			this._timestampView.Size = new System.Drawing.Size(746, 472);
+			this._timestampView.TabIndex = 0;
 			// 
 			// Database
 			// 
@@ -284,7 +317,7 @@ namespace Deployer
 			this.Database.Controls.Add(this.groupBox5);
 			this.Database.Location = new System.Drawing.Point(4, 22);
 			this.Database.Name = "Database";
-			this.Database.Size = new System.Drawing.Size(762, 489);
+			this.Database.Size = new System.Drawing.Size(192, 74);
 			this.Database.TabIndex = 3;
 			this.Database.Text = "Database";
 			this.Database.UseVisualStyleBackColor = true;
@@ -384,7 +417,7 @@ namespace Deployer
 			this.StoredProcedures.Controls.Add(this.groupBox7);
 			this.StoredProcedures.Location = new System.Drawing.Point(4, 22);
 			this.StoredProcedures.Name = "StoredProcedures";
-			this.StoredProcedures.Size = new System.Drawing.Size(762, 489);
+			this.StoredProcedures.Size = new System.Drawing.Size(192, 74);
 			this.StoredProcedures.TabIndex = 4;
 			this.StoredProcedures.Text = "Stored procedures";
 			this.StoredProcedures.UseVisualStyleBackColor = true;
@@ -407,7 +440,7 @@ namespace Deployer
 			this.label8.Size = new System.Drawing.Size(448, 32);
 			this.label8.TabIndex = 3;
 			this.label8.Text = "Stored procedures matching any expression in the list below will not be included " +
-				"in deployment.";
+	"in deployment.";
 			// 
 			// _excludeProcedures
 			// 
@@ -447,39 +480,6 @@ namespace Deployer
 			this._tooltip.AutoPopDelay = 10000;
 			this._tooltip.InitialDelay = 200;
 			this._tooltip.ReshowDelay = 100;
-			// 
-			// _destinationsView
-			// 
-			this._destinationsView.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this._destinationsView.Location = new System.Drawing.Point(8, 8);
-			this._destinationsView.Name = "_destinationsView";
-			this._destinationsView.Project = null;
-			this._destinationsView.Size = new System.Drawing.Size(746, 472);
-			this._destinationsView.TabIndex = 0;
-			// 
-			// _filtersView
-			// 
-			this._filtersView.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this._filtersView.Location = new System.Drawing.Point(8, 8);
-			this._filtersView.Name = "_filtersView";
-			this._filtersView.Project = null;
-			this._filtersView.Size = new System.Drawing.Size(746, 472);
-			this._filtersView.TabIndex = 0;
-			// 
-			// _timestampView
-			// 
-			this._timestampView.Location = new System.Drawing.Point(8, 8);
-			this._timestampView.Name = "_timestampView";
-			this._timestampView.Project = null;
-			this._timestampView.Size = new System.Drawing.Size(746, 472);
-			this._timestampView.TabIndex = 0;
-			// 
-			// _hooksView
-			// 
-			this._hooksView.Location = new System.Drawing.Point(8, 8);
-			this._hooksView.Name = "_hooksView";
-			this._hooksView.Size = new System.Drawing.Size(746, 472);
-			this._hooksView.TabIndex = 0;
 			// 
 			// ProjectSettingsForm
 			// 
