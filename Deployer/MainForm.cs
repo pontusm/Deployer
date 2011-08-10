@@ -915,11 +915,9 @@ namespace Deployer {
 
 				ResetProjectState();
 
-				RescanStructure();
-				PopulateFolderTree(false);
-				SetStatusText("New project created.");
+                RefreshUI(false);
+                SetStatusText("New project created.");
 				UpdateMainFormTitle();
-				UpdateUI();
 			}
 			catch (Exception ex) {
 				ShowNonFatalException(ex);
