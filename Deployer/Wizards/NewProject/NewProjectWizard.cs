@@ -118,7 +118,10 @@ namespace Deployer.Wizards.NewProject {
 		#region Step: Source path
 
 		private void _localpath_TextChanged(object sender, EventArgs e) {
-			_wizard.NextEnabled = !string.IsNullOrEmpty(_localpath.Text);
+			var path = _localpath.Text ?? string.Empty;
+			bool isValid = path.Length > 0 && Directory.Exists(path);
+			_wizard.NextEnabled = isValid;
+			_useProjectFilter.Enabled = isValid && Directory.GetFiles(path, "*.csproj").Length > 0;
 		}
 
 		private void _browse_Click(object sender, EventArgs e) {
@@ -167,7 +170,7 @@ namespace Deployer.Wizards.NewProject {
 		private void _wizard_Finish(object sender, EventArgs e) {
 			// Fill in missing information
 			_project.LocalPath = _localpath.Text;
-		    _project.ActiveDeployConfig.UseProjectFilter = _useProjectFilter.Checked;
+			_project.ActiveDeployConfig.UseProjectFilter = _useProjectFilter.Checked;
 		}
 
 
