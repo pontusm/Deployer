@@ -52,80 +52,19 @@ InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
 
-Function .onInit
-;UAC_Elevate:
-;	UAC::RunElevated
-;	StrCmp 1223 $0 UAC_ElevationAborted ; UAC dialog aborted by user?
-;	StrCmp 0 $0 0 UAC_Err ; Error?
-;	StrCmp 1 $1 0 UAC_Success ;Are we the real deal or just the wrapper?
-;	Quit
+VIProductVersion ${PRODUCT_VERSION}
+VIAddVersionKey ProductName ${PRODUCT_NAME}
+VIAddVersionKey CompanyName ${PRODUCT_PUBLISHER}
+VIAddVersionKey LegalCopyright "(c) Copyright 2011 Pontus Munck and Stendahls AB. All rights reserved."
+VIAddVersionKey FileDescription "A deployment tool"
+VIAddVersionKey FileVersion ${PRODUCT_VERSION}
+VIAddVersionKey ProductVersion ${PRODUCT_VERSION}
+VIAddVersionKey InternalName ${PRODUCT_NAME}
 
-;UAC_Err:
-;	MessageBox mb_iconstop "Unable to elevate, error $0"
-;	Abort
-
-;UAC_ElevationAborted:
-	# elevation was aborted, run as normal?
-;	MessageBox mb_iconstop "This installer requires admin access, aborting!"
-;	Abort
-
-;UAC_Success:
-;	StrCmp 1 $3 +4 ;Admin?
-;	StrCmp 3 $1 0 UAC_ElevationAborted ;Try again?
-;	MessageBox mb_iconstop "This installer requires admin access, try again"
-;	goto UAC_Elevate
-
-	; Check if program already installed
-	;ReadRegStr $R0 HKLM "${PRODUCT_UNINST_KEY}" "UninstallString"
-	;StrCmp $R0 "" done
-
-	;MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION \
-	;	"The groovy ${PRODUCT_NAME} is already installed. It must be uninstalled$\n \
-	;	before the new version can be installed.$\n$\nClick `OK` to uninstall \
-	;	or `Cancel` to abort the installation." \
-	;IDOK uninst
-	;Abort
- 
-;Run the uninstaller
-;uninst:
-	;ClearErrors
-
-	;ExecWait '$R0 _?=$INSTDIR' ;Do not copy the uninstaller to a temp file
-
-	;IfErrors no_remove_uninstaller
-		;You can either use Delete /REBOOTOK in the uninstaller or add some code
-		;here to remove the uninstaller. Use a registry key to check
-		;whether the user has chosen to uninstall. If you are using an uninstaller
-		;components page, make sure all sections are uninstalled.
-	;no_remove_uninstaller:
- 
-;done:
-
-FunctionEnd
-
-Function .onInstFailed
-;	UAC::Unload		; UAC must be unloaded
-FunctionEnd
-
-Function .onInstSuccess
-;	UAC::Unload		; UAC must be unloaded
-FunctionEnd
-
-; This is used to cleanup before installing. It's used to cleanup VirtualStore on Vista.
-;Function CleanupOldFiles
-;	Delete "$INSTDIR\AppStart.config"
-;FunctionEnd
 
 Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite try
-  
-  ; Execute with user privileges
-  ;GetFunctionAddress $0 CleanupOldFiles
-  ;UAC::ExecCodeSegment $0
-
-  ;File "AppStart.exe"
-  ;File "AppStart.config"
   
   SetOutPath "$INSTDIR\${PRODUCT_VERSION}"
   File "..\Deployer\bin\Release\Deployer.exe"
