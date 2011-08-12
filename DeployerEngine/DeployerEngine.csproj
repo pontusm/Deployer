@@ -114,7 +114,6 @@
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
     </Reference>
-    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Services">
       <Name>System.Web.Services</Name>
     </Reference>

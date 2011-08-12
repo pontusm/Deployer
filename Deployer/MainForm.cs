@@ -513,7 +513,7 @@ namespace Deployer {
 					// No matching filter?
 					if (file == null) {
 						_menuInclude.DropDownItems.Add(string.Format("Only \"{0}\"", item.Text), null,
-						                               new EventHandler(_menuIncludeSingle_Click));
+													   new EventHandler(_menuIncludeSingle_Click));
 					}
 				}
 			}
@@ -599,9 +599,9 @@ namespace Deployer {
 				if (file != null) {
 					DialogResult result =
 						MessageBox.Show(this,
-						                string.Format("Are you sure you want to remove this filter?\r\n\r\nExpression: {0} ({1})",
-						                              file.MatchingFilter.Expression, file.MatchingFilter.ExpressionType), "Remove filter",
-						                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+										string.Format("Are you sure you want to remove this filter?\r\n\r\nExpression: {0} ({1})",
+													  file.MatchingFilter.Expression, file.MatchingFilter.ExpressionType), "Remove filter",
+										MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 					if (result == DialogResult.Cancel)
 						break; // Cancel operation
 
@@ -876,7 +876,7 @@ namespace Deployer {
 				if (_currentProject != null && _currentProject.IsDirty()) {
 					DialogResult result =
 						MessageBox.Show(this, "Project has been modified. Do you wish to save it before closing?", "Project modified",
-						                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+										MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 					switch (result) {
 						case DialogResult.Yes:
 							if (!SaveProject())
@@ -915,8 +915,8 @@ namespace Deployer {
 
 				ResetProjectState();
 
-                RefreshUI(false);
-                SetStatusText("New project created.");
+				RefreshUI(false);
+				SetStatusText("New project created.");
 				UpdateMainFormTitle();
 			}
 			catch (Exception ex) {
@@ -1187,7 +1187,7 @@ namespace Deployer {
 				AddToLog("Files(s) added to queue.");
 			else
 				MessageBox.Show(this, "The file or files you selected have no deployment rules set up. You need to configure matching filters in order to deploy the files.",
-				                "No files found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+								"No files found", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			UpdateUI();
 		}
 
@@ -1332,7 +1332,7 @@ namespace Deployer {
 								string errtxt = string.Format("Unable to edit file '{0}'. Error: {1}", file.Name, ex.Message);
 								AddToLog(errtxt);
 								DialogResult res = MessageBox.Show(this, errtxt, "Unable to edit file",
-								                                   MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+																   MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 								if (res == DialogResult.Cancel)
 									return;							// Skip any other files as well
 
@@ -1500,10 +1500,10 @@ namespace Deployer {
 				if (remotetimestamp.LastDeployment > localtimestamp.LastDeployment) {
 					DialogResult res =
 						MessageBox.Show(this,
-						                string.Format(
-						                	"Project has been deployed by {0} ({1}) since you last deployed. Are you sure you want to continue?",
-						                	remotetimestamp.DeployedBy, remotetimestamp.LastDeployment), "Deployment warning",
-						                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+										string.Format(
+											"Project has been deployed by {0} ({1}) since you last deployed. Are you sure you want to continue?",
+											remotetimestamp.DeployedBy, remotetimestamp.LastDeployment), "Deployment warning",
+										MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 					if (res == DialogResult.No)
 						return false;
 				}
