@@ -190,6 +190,7 @@ namespace DeployerEngine
 								dlg.ErrorMessage = ex.Message;
 								dlg.SetLocalInfo("Local File:", file.LocalPath);
 								dlg.SetRemoteInfo("Remote Path:", file.RemotePath);
+								dlg.Plugin = fileDeployer.Name;
 								DialogResult result = dlg.ShowDialog();
 								switch(result) {
 									case DialogResult.Retry:
@@ -265,10 +266,10 @@ namespace DeployerEngine
 			catch (DirectoryNotFoundException ex) {
 				EventManager.OnNotificationMessage("*** WARNING: Unable to update timestamp: " + ex.Message);
 			}
-            catch(IOException ex)
-            {
-                throw new ApplicationException(ex.Message);
-            }
+			catch(IOException ex)
+			{
+				throw new ApplicationException(ex.Message);
+			}
 		}
 
 		/// <summary>
