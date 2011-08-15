@@ -29,7 +29,7 @@ SetCompressor lzma
 ; Instfiles page
 !insertmacro MUI_PAGE_INSTFILES
 ; Finish page
-!define MUI_FINISHPAGE_RUN "$INSTDIR\${PRODUCT_VERSION}\Deployer.exe"
+!define MUI_FINISHPAGE_RUN "$INSTDIR\${PRODUCT_VERSION_NAME}\Deployer.exe"
 !insertmacro MUI_PAGE_FINISH
 
 ; Uninstaller pages
@@ -44,7 +44,6 @@ XPStyle on
 
 RequestExecutionLevel admin
 
-;Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION_NAME}"
 OutFile "DeployerSetup.exe"
 InstallDir "$PROGRAMFILES\Deployer"
@@ -66,7 +65,7 @@ Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite try
   
-  SetOutPath "$INSTDIR\${PRODUCT_VERSION}"
+  SetOutPath "$INSTDIR\${PRODUCT_VERSION_NAME}"
   File "..\Deployer\bin\Release\Deployer.exe"
   File "..\Deployer\bin\Release\DeployerEngine.dll"
   File "..\Deployer\bin\Release\DeployerEngine.XmlSerializers.dll"
@@ -74,15 +73,15 @@ Section "MainSection" SEC01
   File "..\Deployer\bin\Release\GlacialControls.dll"
   File "..\Deployer\bin\Release\Controls.dll"
 
-  SetOutPath "$INSTDIR\${PRODUCT_VERSION}\Plugins"
+  SetOutPath "$INSTDIR\${PRODUCT_VERSION_NAME}\Plugins"
   File "..\DeployerPlugins\bin\Release\DeployerPlugins.dll"
   File "..\DeployerPlugins\bin\Release\edtftpnet-1.1.9.dll"
   
   CreateDirectory "$SMPROGRAMS\Deployer"
   ;CreateShortCut "$SMPROGRAMS\Deployer\Deployer.lnk" "$INSTDIR\AppStart.exe"
   ;CreateShortCut "$DESKTOP\Deployer.lnk" "$INSTDIR\AppStart.exe"
-  CreateShortCut "$SMPROGRAMS\Deployer\Deployer.lnk" "$INSTDIR\${PRODUCT_VERSION}\Deployer.exe"
-  CreateShortCut "$DESKTOP\Deployer.lnk" "$INSTDIR\${PRODUCT_VERSION}\Deployer.exe"
+  CreateShortCut "$SMPROGRAMS\Deployer\Deployer.lnk" "$INSTDIR\${PRODUCT_VERSION_NAME}\Deployer.exe"
+  CreateShortCut "$DESKTOP\Deployer.lnk" "$INSTDIR\${PRODUCT_VERSION_NAME}\Deployer.exe"
   
   ; back up old file extension
   !define Index "Line${__LINE__}"
@@ -96,10 +95,10 @@ Section "MainSection" SEC01
 	  StrCmp $0 "" 0 "${Index}-Skip"
 		WriteRegStr HKCR "Deployer.DeployFile" "" "Deployer Settings File"
 		WriteRegStr HKCR "Deployer.DeployFile\shell" "" "open"
-		WriteRegStr HKCR "Deployer.DeployFile\DefaultIcon" "" "$INSTDIR\${PRODUCT_VERSION}\Deployer.exe,0"
+		WriteRegStr HKCR "Deployer.DeployFile\DefaultIcon" "" "$INSTDIR\${PRODUCT_VERSION_NAME}\Deployer.exe,0"
   "${Index}-Skip:"
 	  WriteRegStr HKCR "Deployer.DeployFile\shell\open\command" "" \
-	    '$INSTDIR\${PRODUCT_VERSION}\Deployer.exe "%1"'
+	    '$INSTDIR\${PRODUCT_VERSION_NAME}\Deployer.exe "%1"'
 	  ;WriteRegStr HKCR "Deployer.DeployFile\shell\edit" "" "Edit Deployer File"
 	  ;WriteRegStr HKCR "Deployer.DeployFile\shell\edit\command" "" '$INSTDIR\Appstart.exe "%1"'
 	 
