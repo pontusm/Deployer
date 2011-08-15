@@ -100,5 +100,6 @@
 //           Better handling of problems with timestamp files
 //           Improved the New Project wizard a bit
 // 2.8.0.1 - Fixed a bug with specifying special filters for the "bin" folder
+// 2.8.0.2 - Fixed a problem with plugin versioning
 
-[assembly: AssemblyVersion("2.8.0.1")]
+[assembly: AssemblyVersion("2.8.0.2")]
