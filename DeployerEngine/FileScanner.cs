@@ -93,6 +93,8 @@ namespace DeployerEngine
 				return;
 
 			if (File.GetLastWriteTime(localFilePath) >= modifiedSince) {
+				virtualPath = virtualPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);		// Remove trailing slash
+
 				// Check if file matches any of the filters
 				//string filePath = Path.Combine(virtualPath, Path.GetFileName(localFilePath));
 				//Filter filter = _filtersettings.IncludeFiles.GetMatchingFilter(filePath);
@@ -168,43 +170,43 @@ namespace DeployerEngine
 			try { //Load files from project file
 				reader = new XmlTextReader(projectFilename);
 
-                bool once = true;
-			    
+				bool once = true;
+				
 				while(reader.Read()) {
 					if(reader.NodeType == XmlNodeType.Element) {
 						switch(reader.Name) {
-						    //VS2005 element
-                            case "OutputPath":
-						        //Little ugly solution with the once flag, but it works for now.
-						        if(once) {
-						            string relativePath0 = reader.ReadElementContentAsString();
-						            AddFolderFromRelativePath(_structure, relativePath0, localPath, modifiedSince);
-                                    once = false;
-						        }
-						        
-                                break;
-						    
-						    //VS2005 element
-						    case "None":
-						    case "Content":
-						        string relativePath1 = reader.GetAttribute("Include");
+							//VS2005 element
+							case "OutputPath":
+								//Little ugly solution with the once flag, but it works for now.
+								if(once) {
+									string relativePath0 = reader.ReadElementContentAsString();
+									AddFolderFromRelativePath(_structure, relativePath0, localPath, modifiedSince);
+									once = false;
+								}
+								
+								break;
+							
+							//VS2005 element
+							case "None":
+							case "Content":
+								string relativePath1 = reader.GetAttribute("Include");
 								AddFileFromRelativePath(_structure, relativePath1, localPath, modifiedSince);
-                                break;
-						    
-						    //VS2003 element
+								break;
+							
+							//VS2003 element
 							case "File":
-						        string relativePath2 = reader.GetAttribute("RelPath");
+								string relativePath2 = reader.GetAttribute("RelPath");
 								AddFileFromRelativePath(_structure, relativePath2, localPath, modifiedSince);
-						        break;
-                            
-						    //VS2003 element
+								break;
+							
+							//VS2003 element
 							case "Config":
-						        //Try to get all files in bin/ folder
-	                            if(reader.GetAttribute("Name").ToLower().CompareTo("release") == 0) {
-	                                string relativePath3 = reader.GetAttribute("OutputPath");
+								//Try to get all files in bin/ folder
+								if(reader.GetAttribute("Name").ToLower().CompareTo("release") == 0) {
+									string relativePath3 = reader.GetAttribute("OutputPath");
 									AddFolderFromRelativePath(_structure, relativePath3, localPath, modifiedSince);
-	                            }
-						        break;
+								}
+								break;
 						}
 					}
 				}
@@ -214,57 +216,57 @@ namespace DeployerEngine
 					reader.Close();
 			}
 		}
-	    
-	    /// <summary>
-	    /// 
-	    /// </summary>
-	    /// <param name="currentStructure"></param>
-	    /// <param name="relativePath"></param>
-	    /// <param name="localPath"></param>
-	    /// <param name="modifiedSince"></param>
-	    private void AddFileFromRelativePath(DeploymentStructure currentStructure, string relativePath, string localPath, DateTime modifiedSince) {
-	        
-	        string virtualPath = string.Empty;
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="currentStructure"></param>
+		/// <param name="relativePath"></param>
+		/// <param name="localPath"></param>
+		/// <param name="modifiedSince"></param>
+		private void AddFileFromRelativePath(DeploymentStructure currentStructure, string relativePath, string localPath, DateTime modifiedSince) {
+			
+			string virtualPath = string.Empty;
 
-	        try {
-	            int endpos = relativePath.LastIndexOf('\\');
+			try {
+				int endpos = relativePath.LastIndexOf('\\');
 
-	            if(endpos != -1)
-	                virtualPath	= relativePath.Substring(0, endpos);	
-	        } 
-	        catch {}
+				if(endpos != -1)
+					virtualPath	= relativePath.Substring(0, endpos);	
+			} 
+			catch {}
 									
-	        string filePath = Path.Combine(localPath, relativePath);
+			string filePath = Path.Combine(localPath, relativePath);
 								
-	        if(CanIncludeDirectory(virtualPath, true)) {
+			if(CanIncludeDirectory(virtualPath, true)) {
 
-	            //Try to add file
-	            AddFile(filePath, virtualPath, modifiedSince);
-	        }
-	    }
-	    
-	    /// <summary>
-	    /// 
-	    /// </summary>
-	    /// <param name="currentStructure"></param>
-	    /// <param name="relativePath"></param>
-	    /// <param name="localPath"></param>
-	    /// <param name="modifiedSince"></param>
-	    private void AddFolderFromRelativePath(DeploymentStructure currentStructure, string relativePath, string localPath, DateTime modifiedSince) {
-            
-	        string folderPath = Path.Combine(localPath, relativePath);
+				//Try to add file
+				AddFile(filePath, virtualPath, modifiedSince);
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="currentStructure"></param>
+		/// <param name="relativePath"></param>
+		/// <param name="localPath"></param>
+		/// <param name="modifiedSince"></param>
+		private void AddFolderFromRelativePath(DeploymentStructure currentStructure, string relativePath, string localPath, DateTime modifiedSince) {
+			
+			string folderPath = Path.Combine(localPath, relativePath);
 
-            if(CanIncludeDirectory(relativePath, true) && Directory.Exists(folderPath)) {
+			if(CanIncludeDirectory(relativePath, true) && Directory.Exists(folderPath)) {
 
-                string[] files = Directory.GetFiles(folderPath);
+				string[] files = Directory.GetFiles(folderPath);
 
-                foreach(string file in files) {
-                    //Try to add file
-                    AddFile(file, relativePath, modifiedSince);
-                }	
-            }
-	    }
+				foreach(string file in files) {
+					//Try to add file
+					AddFile(file, relativePath, modifiedSince);
+				}	
+			}
+		}
 
-	    #endregion
+		#endregion
 	}
 }
