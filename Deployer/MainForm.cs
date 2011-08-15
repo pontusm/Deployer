@@ -816,7 +816,7 @@ namespace Deployer {
 			Debug.WriteLine(text);
 
 			// Need to cut text?
-			_logtext.MaxLength = 1000;
+			_logtext.MaxLength = 3000;
 			if (_logtext.Text.Length + text.Length > _logtext.MaxLength) {
 				int rowend = _logtext.Text.IndexOf("\r\n", text.Length);
 				if (rowend > 0)
