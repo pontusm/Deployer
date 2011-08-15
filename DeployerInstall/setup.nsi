@@ -4,7 +4,7 @@ SetCompressor lzma
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Deployer"
-!define PRODUCT_VERSION "2.8.0.0"
+!define PRODUCT_VERSION "2.8.0.1"
 !define PRODUCT_VERSION_NAME "2.8"
 !define PRODUCT_PUBLISHER "Stendahls"
 !define PRODUCT_WEB_SITE "http://www.stendahls.se"

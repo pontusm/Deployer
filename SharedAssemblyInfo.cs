@@ -99,5 +99,6 @@
 //           Fixed a problem with empty wildcards
 //           Better handling of problems with timestamp files
 //           Improved the New Project wizard a bit
+// 2.8.0.1 - Fixed a bug with specifying special filters for the "bin" folder
 
-[assembly: AssemblyVersion("2.8.0.0")]
+[assembly: AssemblyVersion("2.8.0.1")]
