@@ -159,6 +159,14 @@ namespace DeployerEngine
 				PluginSearcher searcher = (PluginSearcher)Activator.CreateInstanceFrom(tmpdomain, type.Assembly.Location, type.FullName).Unwrap();
 				PluginDescriptor[] pluginDescriptors = searcher.FindPlugins(path);
 
+				// Report any loading errors
+				if (searcher.Errors.Count > 0) {
+					EventManager.OnNotificationMessage("*** One or more plugins failed to load:");
+					foreach (var err in searcher.Errors) {
+						EventManager.OnNotificationMessage("    " + err);
+					}
+				}
+
 				// Populate the dictionary we will use when creating plugins
 				foreach(PluginDescriptor descriptor in pluginDescriptors)
 					_pluginDescriptors.Add(descriptor.PluginTypeFullName, descriptor);
@@ -400,6 +408,16 @@ namespace DeployerEngine
 	/// Searches a directory for available plugins.
 	/// </summary>
 	public class PluginSearcher : MarshalByRefObject {
+
+		private readonly List<string> _errors = new List<string>();
+
+		/// <summary>
+		/// Gets the errors that occured during discovery (if any).
+		/// </summary>
+		public List<string> Errors {
+			get { return _errors; }
+		}
+
 		/// <summary>
 		/// Searches the specified directory for plugins.
 		/// </summary>
@@ -412,9 +430,22 @@ namespace DeployerEngine
 			foreach (var file in files)
 			{
 				var assembly = LoadAssembly(file);
-				if(assembly != null)
-				{
-					plugindescriptors.AddRange(DiscoverPlugins(assembly));
+				if (assembly != null) {
+					try {
+						var pluginDescriptors = DiscoverPlugins(assembly);
+						plugindescriptors.AddRange(pluginDescriptors);
+					}
+					catch(ReflectionTypeLoadException ex) {
+						Debug.WriteLine(ex);
+						Errors.Add(string.Format("Skipping assembly '{0}'. Loader exceptions:", assembly.FullName));
+						foreach (var loaderException in ex.LoaderExceptions) {
+							Errors.Add(string.Format("    {0}", loaderException.Message));
+						}
+					}
+					catch (Exception ex) {
+						Debug.WriteLine(ex);
+						Errors.Add(string.Format("Skipping assembly '{0}'. ({1})", assembly.FullName, ex.Message));
+					}
 				}
 			}
 
@@ -424,20 +455,27 @@ namespace DeployerEngine
 		/// <summary>
 		/// Discovers all plugins that are found in the specified assembly.
 		/// </summary>
-		private static IEnumerable<PluginDescriptor> DiscoverPlugins(Assembly assembly) {
+		private IEnumerable<PluginDescriptor> DiscoverPlugins(Assembly assembly) {
 			foreach (Type type in assembly.GetTypes()) {
 				if (typeof(IDeployerPlugin).IsAssignableFrom(type)) {
-						
-					// Create instance to retrieve identifier
-					// TODO: This should be removed once identifiers are no longer needed
-					IDeployerPlugin plugin = (IDeployerPlugin) Activator.CreateInstance(type);
+					IDeployerPlugin plugin = null;
+					try {
+						// Create instance to retrieve identifier
+						// TODO: This should be removed once identifiers are no longer needed
+						plugin = (IDeployerPlugin) Activator.CreateInstance(type);
+					}
+					catch (Exception ex) {
+						Debug.WriteLine(ex);
+						Errors.Add(string.Format("Skipping plugin '{0}'. Error: Failed to create type '{1}' in assembly '{2}'. ({3})", type.Name, type.FullName, assembly.FullName, ex.Message));
+					}
 
-					yield return new PluginDescriptor(type, plugin.PluginIdentifier, plugin.Name, plugin.Version);
+					if (plugin != null)
+						yield return new PluginDescriptor(type, plugin.PluginIdentifier, plugin.Name, plugin.Version);
 				}
 			}
 		}
 
-		private static Assembly LoadAssembly(string assemblyFileName)
+		private Assembly LoadAssembly(string assemblyFileName)
 		{
 			try
 			{
@@ -447,10 +485,10 @@ namespace DeployerEngine
 			{
 				// Not a valid assembly, so just skip it
 			}
-			catch (Exception ex)
-			{
-				Debug.WriteLine(ex.ToString());
-				EventManager.OnNotificationMessage(string.Format("Plugin could not be loaded: '{0}'", assemblyFileName));
+			catch (Exception ex) {
+				Debug.WriteLine(ex);
+				Errors.Add(string.Format("Plugin could not be loaded: '{0}' ({1})", assemblyFileName, ex.Message));
+				//EventManager.OnNotificationMessage(string.Format("Plugin could not be loaded: '{0}'", assemblyFileName));
 			}
 			return null;
 		}
