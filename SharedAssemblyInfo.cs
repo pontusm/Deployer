@@ -101,5 +101,6 @@
 //           Improved the New Project wizard a bit
 // 2.8.0.1 - Fixed a bug with specifying special filters for the "bin" folder
 // 2.8.0.2 - Fixed a problem with plugin versioning
+// 2.8.0.3 - Fixed issue #1 - problem with escaped characters in project files
 
-[assembly: AssemblyVersion("2.8.0.2")]
+[assembly: AssemblyVersion("2.8.0.3")]
