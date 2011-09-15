@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Web;
 using System.Xml;
 using DeployerEngine.Project;
 using DeployerEngine.Util;
@@ -189,7 +190,7 @@ namespace DeployerEngine
 							//VS2005 element
 							case "None":
 							case "Content":
-								string relativePath1 = reader.GetAttribute("Include");
+								string relativePath1 = HttpUtility.UrlDecode(reader.GetAttribute("Include"));
 								AddFileFromRelativePath(_structure, relativePath1, localPath, modifiedSince);
 								break;
 							
@@ -216,7 +217,7 @@ namespace DeployerEngine
 					reader.Close();
 			}
 		}
-		
+
 		/// <summary>
 		/// 
 		/// </summary>
